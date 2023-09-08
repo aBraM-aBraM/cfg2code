@@ -6,9 +6,9 @@ import frontend
 import backend
 
 @click.command
-@click.argument("input_file", type=click.Path(exists=True))
+@click.argument("input-file", type=click.Path(exists=True))
 @click.option("--schema", type=click.Path(exists=True), required=False)
-@click.option("--output_file", type=click.Path(), default="out.h")
+@click.option("--output-file", type=click.Path(), default="out.h")
 def main(input_file, schema, output_file):
     frontend_extension = os.path.splitext(input_file)[1][1:]
 
