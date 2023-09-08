@@ -9,7 +9,9 @@ import backend
 @click.argument("input-file", type=click.Path(exists=True))
 @click.option("--schema", type=click.Path(exists=True), required=False)
 @click.option("--output-file", type=click.Path(), default="out.h")
-def main(input_file, schema, output_file):
+@click.option("--typename", type=str, default="Config")
+@click.option("--instance", type=str, default="config")
+def main(input_file, schema, output_file, typename, instance):
     frontend_extension = os.path.splitext(input_file)[1][1:]
     schema_extension = os.path.splitext(schema)[1][1:]
     backend_extension = os.path.splitext(output_file)[1][1:]
@@ -46,7 +48,8 @@ def main(input_file, schema, output_file):
             schema_data = schema_datatype.loads(schema_data)
         schema_datatype.validate(data, schema_data)
 
-    out_data = dump_func(data)
+    out_data = dump_func(data, typename, instance)
+    print(out_data)
 
     with open(output_file, "w") as out_file:
         out_file.write(out_data)

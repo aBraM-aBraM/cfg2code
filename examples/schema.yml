@@ -1,20 +1,17 @@
 type: map
 mapping:
-  PersonObject:
-    type: map
-    mapping:
-      name:
-        type: str
-        required: True
-      age:
-        type: int
-        range:
-          min: 0
-          max: 99
-        required: True
-      id:
-        type: str
-        pattern: '^[0-9]{9}$'
-        required: True
+  name:
+    type: str
+    required: True
+  age:
+    type: int
+    range:
+      min: 0
+      max: 99
+    required: True
+  id:
+    type: str
+    pattern: '^[0-9]{9}$'
     required: True
 required: True
+

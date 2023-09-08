@@ -11,28 +11,28 @@ The purpose is to simplify configs for c/c++ programs
 
 ## Example
 
-examples/success.json
+This example is from `examples/success.json`
 
 ```json
 {
-    "PersonObject": {
-        "name": "Alice Johnson",
-        "age": 25,
-        "id": "123456789"
-    }
+    "name": "Alice Johnson",
+    "age": 25,
+    "id": "123456789"
 }
 ```
 
-```sh
-python3 examples/success.json --schema examplkes/schema.json --output-file out.h
+```shell
+python3 cfg2code.py examples/success.json --schema examples/schema.json --typename Config --instance my_config
 ```
 
 ```c
-struct PersonObject {
-	char name[13];
-	int age;
-	char id[9];
+struct Config {
+        char name[13];
+        int age;
+        char id[9];
 };
+typedef struct Config Config;
+Config my_config = {"Alice Johnson", 25, "123456789"};
 ```
 
 > Note: you may notice that strings are sized char arrays. This is

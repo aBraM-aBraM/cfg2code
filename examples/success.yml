@@ -1,4 +1,3 @@
-PersonObject:
-  name: Alice Johnson
-  age: 25
-  id: "123456789"
+name: Alice Johnson
+age: 25
+id: "123456789"
