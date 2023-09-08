@@ -6,6 +6,9 @@ receives json/yml/etc as input, (optional) validation schema and converts to c/c
 
 The purpose is to simplify configs for c/c++ programs
 
+> Note: The schema and input files don't have to be of the same language.
+> For example, a yml input file can be validated with a json schema.
+
 ## Example
 
 examples/success.json
