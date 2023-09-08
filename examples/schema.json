@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "PersonObject": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 99
+                },
+                "id": {
+                    "type": "string",
+                    "pattern": "^[0-9]{9}$"
+                }
+            },
+            "required": ["name", "age", "id"]
+        }
+    },
+    "required": ["PersonObject"]
+}
