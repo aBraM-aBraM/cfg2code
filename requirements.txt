@@ -1,0 +1,14 @@
+anytree==2.9.0
+attrs==23.1.0
+click==8.1.7
+docopt==0.6.2
+jsonschema==4.19.0
+jsonschema-specifications==2023.7.1
+pykwalify==1.8.0
+python-dateutil==2.8.2
+PyYAML==6.0.1
+referencing==0.30.2
+rpds-py==0.10.2
+ruamel.yaml==0.17.32
+ruamel.yaml.clib==0.2.7
+six==1.16.0

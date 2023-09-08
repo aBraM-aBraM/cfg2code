@@ -22,6 +22,7 @@ This example is from `examples/success.json`
 ```
 
 ```shell
+python3 -m pip install -r requirements.txt
 python3 cfg2code.py examples/success.json --schema examples/schema.json --typename Config --instance my_config
 ```
 
