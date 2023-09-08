@@ -18,6 +18,20 @@ for filename in os.listdir(EXAMPLES_DIR):
 
         file_groups[file_extension].append(os.path.join(EXAMPLES_DIR, filename))
 
+def assert_execution(input_file: str, schema_file: str, result: bool):
+    try:
+        process = subprocess.Popen(f"python3 cfg2code.py {input_file} --schema {schema_file}",
+                                    shell=True,
+                                        cwd=os.path.dirname(__file__),
+                                        stdout=subprocess.PIPE,
+                                        stderr=subprocess.PIPE)
+        assert result == (0 == process.wait())
+    except AssertionError:
+        _, stderr = process.communicate()
+        print(f" [X] {frontend} failed!")
+        print(stderr.decode())
+        raise
+
 if __name__ == "__main__":
     
     for file_group in file_groups:
@@ -26,16 +40,8 @@ if __name__ == "__main__":
         fail, schema, success = file_groups[file_group]
 
         try:
-            assert 0 == subprocess.Popen(f"python3 cfg2code.py {success} --schema {schema}",
-                                        shell=True,
-                                            cwd=os.path.dirname(__file__),
-                                            stdout=subprocess.PIPE,
-                                            stderr=subprocess.PIPE).wait()
-            assert 0 != subprocess.Popen(f"python3 cfg2code.py {fail} --schema {schema}",
-                                        shell=True,
-                                            cwd=os.path.dirname(__file__),
-                                            stdout=subprocess.PIPE,
-                                            stderr=subprocess.PIPE).wait()
+            assert_execution(success, schema, True)
+            assert_execution(fail, schema, False)
             print(f" [V] {frontend} works!")
         except AssertionError:
-            print(f" [X] {frontend} failed!")
+            continue

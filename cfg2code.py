@@ -11,10 +11,20 @@ import backend
 @click.option("--output_file", type=click.Path(), default="out.h")
 def main(input_file, schema, output_file):
     frontend_extension = os.path.splitext(input_file)[1][1:]
-    frontend_func = frontend.file_extension_to_func[frontend_extension] 
+
+    try:
+        frontend_func = frontend.file_extension_to_func[frontend_extension] 
+    except KeyError:
+        print(f"Error: {frontend_extension} is not a supported frontend")
+        exit(1)
 
     backend_extension = os.path.splitext(output_file)[1][1:]
-    backend_func = backend.file_extension_to_func[backend_extension]
+    try:
+        backend_func = backend.file_extension_to_func[backend_extension]
+    except KeyError:
+        print(f"Error: {backend} is not a supported backend")
+        exit(1)
+
 
     schema_data = None
     if schema:
