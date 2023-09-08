@@ -32,6 +32,9 @@ struct PersonObject {
 };
 ```
 
+> Note: you may notice that strings are sized char arrays. This is
+> intended with the purpose of compatbility with embedded code without heap
+
 ## Design
 
 * Frontend - parses generic highlevel datatypes like json, yaml etc. to python dictionary
